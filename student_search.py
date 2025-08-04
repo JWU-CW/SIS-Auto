@@ -5,8 +5,17 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from webdriver_manager.chrome import ChromeDriverManager
+from dotenv import load_dotenv
+
+import os
 
 import time
+
+# Load .env file from current directory
+# Get environment variables
+load_dotenv()
+username = os.getenv("USER")
+password = os.getenv("PW")
 
 # Ask for student ID
 student_id = input("Enter Student ID: ")
@@ -31,8 +40,8 @@ try:
     username_input = driver.find_element(By.ID, "username")
     password_input = driver.find_element(By.ID, "password")
 
-    username_input.send_keys("jwu")
-    password_input.send_keys("Wzf104416!")
+    username_input.send_keys(username)
+    password_input.send_keys(password)
 
     # Step 3: Find the LOGIN button and click it
     login_button = driver.find_element(By.XPATH, "//button[normalize-space(text())='LOGIN'] | //input[@type='submit' and @value='LOGIN']")

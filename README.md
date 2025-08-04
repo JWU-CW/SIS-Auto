@@ -1,12 +1,12 @@
 # Student Search Automation Tool
 
-This program automates the process of logging into the CWCS website and selecting a student from the list. It opens a real Chrome browser so you can see what’s happening step by step.
+This program automates the process of logging into the CWCS Student Information System (SIS) website and selecting a student from the list. It opens a real Chrome browser so you can see what’s happening step by step.
 
 ---
 
 ## ✅ What This Does
 
-- Opens the CWCS website in Chrome.
+- Opens the CWCS SIS website in Chrome.
 - Logs in using test credentials (you can change these).
 - Clicks on the first student name in the table.
 
