@@ -3,10 +3,12 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
 from dotenv import load_dotenv
 import os
 import time
+import sys
 
 def search_student_by_id():
     # Load environment variables from .env
@@ -24,6 +26,7 @@ def search_student_by_id():
     chrome_service = Service(ChromeDriverManager().install())
     options = webdriver.ChromeOptions()
     options.add_argument("--log-level=3")  # Suppress Chrome logs
+    options.add_experimental_option("excludeSwitches", ["enable-logging"])  # Suppress DevTools warnings
 
     driver = webdriver.Chrome(service=chrome_service, options=options)
 
@@ -54,14 +57,33 @@ def search_student_by_id():
 
         # Step 5: Click on the first student result
         wait = WebDriverWait(driver, 5)
-        first_link = wait.until(EC.element_to_be_clickable(
-            (By.CSS_SELECTOR, "#sp_datatable_entity_list_table tbody tr a")
-        ))
-        first_link.click()
+        try:
+            first_link = wait.until(EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "#sp_datatable_entity_list_table tbody tr a")
+            ))
+            first_link.click()
+        except TimeoutException:
+            print("❌ Student not found")
+            sys.exit()
 
+        name = driver.find_element(By.CSS_SELECTOR, "h2.student-profile-name").text
+        
+        district_id = driver.find_element(
+            By.XPATH, "//td[./b[text()='District:']]/following-sibling::td"
+        ).text
+
+        email = driver.find_element(
+            By.XPATH, "//li[b[text()='Email']]/following-sibling::li[1]/a"
+        ).text
+
+        print("--------------------------------------------------")
+        print("Student Name: " + name)
+        print("District ID: " + district_id)
+        print("Contact Email: " + email)
+        print("--------------------------------------------------")
         # Step 6: Hold the result briefly
         print("Search submitted. The browser will close in 3 seconds...")
-        time.sleep(5)
+        time.sleep(3)
 
     finally:
         driver.quit()
