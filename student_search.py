@@ -66,6 +66,7 @@ def search_student_by_id():
             print("❌ Student not found")
             sys.exit()
 
+        # Step 6: Extract info from student profile page
         name = driver.find_element(By.CSS_SELECTOR, "h2.student-profile-name").text
         
         district_id = driver.find_element(
