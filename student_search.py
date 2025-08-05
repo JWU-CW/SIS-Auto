@@ -82,7 +82,8 @@ def search_student_by_id():
         print("District ID: " + district_id)
         print("Contact Email: " + email)
         print("--------------------------------------------------")
-        # Step 6: Hold the result briefly
+        
+        # Step 7: Hold the result briefly
         print("Search submitted. The browser will close in 3 seconds...")
         time.sleep(3)
 
