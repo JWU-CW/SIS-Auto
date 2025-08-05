@@ -29,4 +29,4 @@ Make sure to **check the box that says "Add Python to PATH"** during installatio
 Open **Command Prompt** and run the following:
 
 ```bash
-pip install selenium webdriver-manager
+pip install selenium webdriver-manager python-dotenv
