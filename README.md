@@ -7,8 +7,9 @@ This program automates the process of logging into the CWCS Student Information 
 ## ✅ What This Does
 
 - Opens the CWCS SIS website in Chrome.
-- Logs in using test credentials (you can change these).
-- Clicks on the first student name in the table.
+- Logs in using provided credentials (you can change these).
+- Search the student with the provided id
+- Extract information from the profile page of the found student.
 
 ---
 

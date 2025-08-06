@@ -69,6 +69,10 @@ def search_student_by_id():
         # Step 6: Extract info from student profile page
         name = driver.find_element(By.CSS_SELECTOR, "h2.student-profile-name").text
         
+        grade = driver.find_element(
+            By.XPATH, "//td[./b[text()='Grade:']]/following-sibling::td"
+        ).text
+
         district_id = driver.find_element(
             By.XPATH, "//td[./b[text()='District:']]/following-sibling::td"
         ).text
@@ -77,10 +81,29 @@ def search_student_by_id():
             By.XPATH, "//li[b[text()='Email']]/following-sibling::li[1]/a"
         ).text
 
+        try:
+            ES_link = wait.until(EC.element_to_be_clickable(
+                (By.CSS_SELECTOR, "#sp-panel-staff table.sp-panel-table tbody tr a")
+            ))
+            ES_profile_url = ES_link.get_attribute("href")
+            driver.get(ES_profile_url)
+        except TimeoutException:
+            print("❌ Could not find the student's ES")
+            sys.exit()
+        
+         # Step 6: Extract info from staff profile page
+        ES_name = driver.find_element(By.CSS_SELECTOR, "h2.staff-profile-name ").text
+        ES_email = driver.find_element(
+            By.XPATH, "//li[b[text()='Work Email:']]/a"
+        ).text
+
         print("--------------------------------------------------")
         print("Student Name: " + name)
+        print("Grade: " + grade)
         print("District ID: " + district_id)
         print("Contact Email: " + email)
+        print("ES Name: " + ES_name)
+        print("ES Email: " + ES_email)
         print("--------------------------------------------------")
         
         # Step 7: Hold the result briefly
