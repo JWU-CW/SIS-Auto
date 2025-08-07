@@ -9,6 +9,7 @@ from dotenv import load_dotenv
 import os
 import time
 import sys
+from helper import split_name, generate_email
 
 def search_student_by_id():
     # Load environment variables from .env
