@@ -23,12 +23,6 @@ def split_name(full_name: str) -> dict:
 
     return {'first_name': first_name, 'last_name': last_name}
 
-def generate_email(id: str) -> str:
-    """
-    Given the student's district id number, generate their school email associated with the id
-    """
-    return id + '@cwcharter.org'
-
 def generate_random_string(length=8):
     """
     generate temporary password

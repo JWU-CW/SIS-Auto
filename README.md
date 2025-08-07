@@ -31,3 +31,12 @@ Open **Command Prompt** and run the following:
 
 ```bash
 pip install selenium webdriver-manager python-dotenv
+```
+
+---
+
+## ⚙️Run the program
+
+### 1. Set up .env file
+
+### 2. Run the script
