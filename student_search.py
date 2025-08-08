@@ -5,11 +5,15 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.common.exceptions import TimeoutException
 from webdriver_manager.chrome import ChromeDriverManager
-from helper import split_name, generate_random_string
+from helper import split_name, generate_random_string, generate_OU_path, add_user_to_csv
 from dotenv import load_dotenv
 import os
 import time
 import sys
+import csv
+
+# Define the CSV file path
+csv_file = 'data.csv'
 
 def search_student_by_id():
     # Load environment variables from .env
@@ -123,6 +127,19 @@ def search_student_by_id():
         res = split_name(name)
         res["email"] = district_id
         res["password"] = generate_random_string()
+        
+        ES = split_name(ES_name)
+        row = [
+            res['first_name'],
+            res['last_name'],
+            district_id + "@cwcharter.org",
+            res['password'],
+            generate_OU_path(grade),
+            ES['first_name'],
+            ES['last_name'],
+            ES_email
+        ]
+        add_user_to_csv(row)
 
         return res
 
