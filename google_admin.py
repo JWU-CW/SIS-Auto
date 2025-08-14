@@ -83,8 +83,10 @@ def create_google_account(first_name, last_name, email, temp_password):
         )
         password_input.send_keys(temp_password)
 
-        print("Account created. The browser will close in 10 seconds...")
-        time.sleep(10)
+        print("Please click the 'Add new user' button manually.")
+        input("Press Enter here after you've clicked the button...")
+
+        print("Account created. Closing browser.")
 
     finally:
         driver.quit()

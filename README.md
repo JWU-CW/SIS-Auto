@@ -43,8 +43,8 @@ Enter the credentials for your SIS account and Google Admin account on the .env 
 
 ### 2. Run the script
 
-On the **Command Prompt** and run the following:
+On the **Command Prompt**, make sure you’re in the root directory of the folder that contains your code, and run the following:
 
 ```bash
-python main.py
+python .\main.py
 ```
