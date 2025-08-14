@@ -39,4 +39,12 @@ pip install selenium webdriver-manager python-dotenv
 
 ### 1. Set up .env file
 
+Enter the credentials for your SIS account and Google Admin account on the .env file, and don't share the file with anyone else.
+
 ### 2. Run the script
+
+On the **Command Prompt** and run the following:
+
+```bash
+python main.py
+```
