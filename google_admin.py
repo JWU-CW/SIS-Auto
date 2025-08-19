@@ -18,7 +18,7 @@ def create_google_account(first_name, last_name, email, temp_password):
 
     if not username or not password:
         raise Exception("Missing Google Admin USER or PW in .env file")
-
+    
     # Set up Chrome WebDriver
     chrome_service = Service(ChromeDriverManager().install())
     options = webdriver.ChromeOptions()

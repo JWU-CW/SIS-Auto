@@ -94,31 +94,31 @@ def search_student_by_id():
             (By.XPATH, "//li[b[text()='Email']]/following-sibling::li[1]/a")
         )).text
 
-        try:
-            ES_link = wait.until(EC.element_to_be_clickable(
-                (By.CSS_SELECTOR, "#sp-panel-staff table.sp-panel-table tbody tr a")
-            ))
-            ES_url = ES_link.get_attribute("href")
-            driver.get(ES_url)
-        except TimeoutException:
-            print("❌ Could not find the student's ES")
-            sys.exit()
+        # try:
+        #     ES_link = wait.until(EC.element_to_be_clickable(
+        #         (By.CSS_SELECTOR, "#sp-panel-staff table.sp-panel-table tbody tr a")
+        #     ))
+        #     ES_url = ES_link.get_attribute("href")
+        #     driver.get(ES_url)
+        # except TimeoutException:
+        #     print("❌ Could not find the student's ES")
+        #     sys.exit()
         
-        # Step 6: Extract info from staff profile page
-        ES_name = wait.until(EC.visibility_of_element_located(
-            (By.CSS_SELECTOR, "h2.staff-profile-name ")
-        )).text
-        ES_email = wait.until(EC.visibility_of_element_located(
-            (By.XPATH, "//li[b[text()='Work Email:']]/a")
-        )).text
+        # # Step 6: Extract info from staff profile page
+        # ES_name = wait.until(EC.visibility_of_element_located(
+        #     (By.CSS_SELECTOR, "h2.staff-profile-name ")
+        # )).text
+        # ES_email = wait.until(EC.visibility_of_element_located(
+        #     (By.XPATH, "//li[b[text()='Work Email:']]/a")
+        # )).text
 
         print("--------------------------------------------------")
         print("Student Name: " + name)
         print("Grade: " + grade)
         print("District ID: " + district_id)
         print("Contact Email: " + email)
-        print("ES Name: " + ES_name)
-        print("ES Email: " + ES_email)
+        # print("ES Name: " + ES_name)
+        # print("ES Email: " + ES_email)
         print("--------------------------------------------------")
         
         # Step 7: Return the results
@@ -128,16 +128,16 @@ def search_student_by_id():
         res["email"] = district_id
         res["password"] = generate_random_string()
         
-        ES = split_name(ES_name)
+        # ES = split_name(ES_name)
         row = [
             res['first_name'],
             res['last_name'],
             district_id + "@cwcharter.org",
             res['password'],
             generate_OU_path(grade),
-            ES['first_name'],
-            ES['last_name'],
-            ES_email
+            # ES['first_name'],
+            # ES['last_name'],
+            # ES_email
         ]
         add_user_to_csv(row)
 
