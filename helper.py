@@ -74,7 +74,7 @@ def generate_OU_path(grade):
 
 def add_user_to_csv(row):
     # Define header
-    header = ["First Name", "Last Name", "Email Address", "Password", "Org Unit Path", "ES First Name", "ES Last Name", "ES Email"]
+    header = ["First Name", "Last Name", "School Email", "Password", "Org Unit Path", "Contact Email", "ES Email"]
     
     # Check if file exists
     file_exists = os.path.exists(csv_file)
