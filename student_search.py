@@ -62,6 +62,18 @@ def search_student_by_id():
         student_id_input = wait.until(EC.element_to_be_clickable((By.ID, "entity-filter-search-name")))
         student_id_input.send_keys(student_id)
         
+        # 1. Click the dropdown toggle button
+        dropdown_button = wait.until(EC.element_to_be_clickable(
+            (By.CSS_SELECTOR, "#entity-has-enrollments-widget .dropdown__toggle")
+        ))
+        dropdown_button.click()
+
+        # 2. Click the "Yes" option inside the expanded menu
+        yes_option = wait.until(EC.element_to_be_clickable(
+            (By.XPATH, "//button[@class='dropdown__link' and @data-value='has_enrollments:1']")
+        ))
+        yes_option.click()
+
         search_button = wait.until(EC.element_to_be_clickable(
             (By.XPATH, "//button[normalize-space(text())='Search'] | //input[@type='submit' and @value='Search']")
         ))
