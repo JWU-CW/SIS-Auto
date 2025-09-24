@@ -49,7 +49,7 @@ def search_student_by_id():
         password_input.send_keys(password)
 
         login_button = wait.until(EC.element_to_be_clickable(
-            (By.XPATH, "//button[normalize-space(text())='LOGIN'] | //input[@type='submit' and @value='LOGIN']")
+            (By.XPATH, "//button[contains(@class,'sign-in-button')]")
         ))
         login_button.click()
 
