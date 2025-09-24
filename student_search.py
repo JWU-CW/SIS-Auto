@@ -119,20 +119,23 @@ def search_student_by_id():
             )).text
         except Exception:
             print("❌ Could not find the student's ES")
-
-        print("--------------------------------------------------")
-        print("Student Name: " + name)
-        print("Grade: " + grade)
-        print("ID: " + district_id)
-        print("--------------------------------------------------")
-        
-        # Step 7: Return the results
-        print("Search submitted.")
         
         res = split_name(name)
         res["email"] = district_id
         res["password"] = generate_random_string()
         
+        print("--------------------------------------------------")
+        print("First Name: " + res['first_name'])
+        print("Last Name: " + res['last_name'])
+        print("ID: " + district_id)
+        print("Grade: " + grade)
+        print("Contact Email: " + email)
+        print("ES Email: " + ES_email)
+        print("--------------------------------------------------")
+
+        # Step 7: Return the results
+        print("Search submitted.")
+
         row = [
             res['first_name'],
             res['last_name'],
